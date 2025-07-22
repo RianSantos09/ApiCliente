@@ -8,8 +8,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 
-public class ApplicationStart {
-    public static void  main(String[] args){
+public class ApplicationStart { // Nome da classe principal que contém o método main para iniciar a aplicação
+
+    public static void main(String[] args) {
+        // Método estático da classe SpringApplication que inicia a aplicação Spring Boot.
+        // Ele realiza a inicialização do contexto da aplicação, configura beans, etc.
         SpringApplication.run(ApplicationStart.class, args);
     }
 }

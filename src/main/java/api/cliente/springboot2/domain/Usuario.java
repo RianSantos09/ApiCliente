@@ -13,6 +13,7 @@ public class Usuario { // Declaração da classe Cliente. Esta é uma classe de 
 
     private Long id;
     private String name;
+    private  String senha;
 
 
 }

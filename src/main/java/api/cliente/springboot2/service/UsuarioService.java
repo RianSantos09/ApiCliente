@@ -36,4 +36,12 @@ public class UsuarioService {
         return usuario;
     }
 
+    public void delete(Long id) {
+        usuarios.remove(findById(id));
+    }
+
+    public void replace(Usuario usuario) {
+        delete(usuario.getId());
+        usuarios.add(usuario);
+    }
 }

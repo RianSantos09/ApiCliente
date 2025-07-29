@@ -6,9 +6,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
-    - "3306:3306"
+      - "3306:3306"
     volumes:
-    - api_data:/var/lib/mysql
+      - api_data:/var/lib/mysql
 
 volumes:
   api_data:

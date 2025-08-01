@@ -3,6 +3,9 @@ package api.cliente.springboot2.controller;
 import api.cliente.springboot2.domain.Usuario;
 import api.cliente.springboot2.service.UsuarioService;
 import api.cliente.springboot2.util.DateUtil;
+import dto.UsuarioRequestDto;
+import jakarta.persistence.Entity;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,7 @@ import java.util.List;
 @RequestMapping("usuarios") // Mapeia todas as requisições que começam com "/usuario" para este controlador
 @Log4j2 // Fornece um objeto 'log' (ex: 'log.info()') para registrar mensagens no console/arquivo de log
 @RequiredArgsConstructor // Gera um construtor para campos 'final'.
+
 
 public class UsuarioController {
     private final DateUtil dateUtil;
@@ -34,7 +38,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity <Usuario> save( @RequestBody Usuario usuario){
+    public ResponseEntity <Usuario> save( @RequestBody UsuarioRequestDto usuario){
         return new  ResponseEntity<>(usuarioService.save(usuario),HttpStatus.CREATED);
     }
 

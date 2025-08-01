@@ -1,16 +1,24 @@
 package api.cliente.springboot2.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Builder
+
 
 public class Usuario { // Declaração da classe Cliente. Esta é uma classe de modelo (ou "domain" / "POJO") que representa um cliente.
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String name;

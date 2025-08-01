@@ -2,6 +2,7 @@ package api.cliente.springboot2.service;
 
 import api.cliente.springboot2.domain.Usuario;
 import api.cliente.springboot2.repository.UsuarioRepository;
+import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ private final  UsuarioRepository usuarioRepository;
         return usuarioRepository.findAll();
     }
 
-    public Usuario findById(long id) {
+    public Usuario findByIdOrThrowBadRequestException(long id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "usuario não encontrado"));
     }
@@ -34,11 +35,16 @@ private final  UsuarioRepository usuarioRepository;
     }
 
     public void delete(Long id) {
-        usuarios.remove(findById(id));
+        usuarioRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
-    public void replace(Usuario usuario) {
-        delete(usuario.getId());
-        usuarios.add(usuario);
+    public void replace(UsuarioPutDto usuarioPutDto) {
+        Usuario saveUsuario = findByIdOrThrowBadRequestException (usuarioPutDto.getId());
+        Usuario usuario =Usuario.builder()
+                .id(saveUsuario.getId())
+                .name(usuarioPutDto.getName())
+                .build();
+
+        usuarioRepository.save(usuario);
     }
 }

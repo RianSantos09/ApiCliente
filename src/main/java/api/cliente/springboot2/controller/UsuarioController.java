@@ -3,6 +3,7 @@ package api.cliente.springboot2.controller;
 import api.cliente.springboot2.domain.Usuario;
 import api.cliente.springboot2.service.UsuarioService;
 import api.cliente.springboot2.util.DateUtil;
+import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
 import jakarta.persistence.Entity;
 import lombok.Builder;
@@ -38,8 +39,8 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity <Usuario> save( @RequestBody UsuarioRequestDto usuario){
-        return new  ResponseEntity<>(usuarioService.save(usuario),HttpStatus.CREATED);
+    public ResponseEntity <Usuario> save( @RequestBody UsuarioRequestDto usuarioRequestDto){
+        return new  ResponseEntity<>(usuarioService.save(usuarioRequestDto),HttpStatus.CREATED);
     }
 
     @DeleteMapping (path = "/{id}")
@@ -49,7 +50,7 @@ public class UsuarioController {
     }
 
     @PutMapping
-    public ResponseEntity <?> replace( @RequestBody Usuario usuario){
+    public ResponseEntity <?> replace(@RequestBody UsuarioPutDto usuarioPutDto){
         usuarioService.replace(usuario);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

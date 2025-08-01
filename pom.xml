@@ -12,13 +12,16 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lombok.version>1.18.30</lombok.version> </properties>
+        <lombok.version>1.18.30</lombok.version>
+    </properties>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
         <version>3.5.3</version>
     </parent>
+
     <dependencies>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

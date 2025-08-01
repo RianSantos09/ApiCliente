@@ -2,6 +2,7 @@ package api.cliente.springboot2.service;
 
 import api.cliente.springboot2.domain.Usuario;
 import api.cliente.springboot2.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,22 +12,18 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
-    private static List<Usuario> usuarios;
 
-    static {
-        usuarios = new ArrayList<>(List.of(new Usuario(1l, "rian", "12345"), new Usuario(2l, "jonatas", "123456")));
-    }
+private final  UsuarioRepository usuarioRepository;
 
     public List<Usuario> listAll() {
-        return usuarios;
+        return usuarioRepository.findAll();
     }
 
     public Usuario findById(long id) {
-        return usuarios.stream()
-                .filter(usuario -> usuario.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "USUARIO NOT FOUND"));
+        return usuarioRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "usuario não encontrado"));
     }
 
     public Usuario save(Usuario usuario) {

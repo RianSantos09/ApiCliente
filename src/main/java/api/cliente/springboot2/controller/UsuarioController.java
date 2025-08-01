@@ -35,7 +35,7 @@ public class UsuarioController {
     @GetMapping(path = "/{id}")
     public ResponseEntity <Usuario>findById(@PathVariable Long id) { // O método retorna uma lista de objetos Cliente.
 
-        return ResponseEntity.ok(usuarioService.findById(id));
+        return ResponseEntity.ok(usuarioService.findByIdOrThrowBadRequestException(id));
     }
 
     @PostMapping
@@ -51,7 +51,7 @@ public class UsuarioController {
 
     @PutMapping
     public ResponseEntity <?> replace(@RequestBody UsuarioPutDto usuarioPutDto){
-        usuarioService.replace(usuario);
+        usuarioService.replace(usuarioPutDto);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -5,6 +5,7 @@ import api.cliente.springboot2.repository.UsuarioRepository;
 import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
 import lombok.RequiredArgsConstructor;
+import mapper.UsuarioMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -29,9 +30,8 @@ private final  UsuarioRepository usuarioRepository;
     }
 
     public Usuario save( UsuarioRequestDto usuarioRequestDto) {
-        Usuario usuario= Usuario.builder().name(usuarioRequestDto.getName()).build();
 
-        return usuarioRepository.save(usuario);
+        return usuarioRepository.save(UsuarioMapper.INSTANCE.toUsuario(usuarioRequestDto));
     }
 
     public void delete(Long id) {
@@ -40,11 +40,8 @@ private final  UsuarioRepository usuarioRepository;
 
     public void replace(UsuarioPutDto usuarioPutDto) {
         Usuario saveUsuario = findByIdOrThrowBadRequestException (usuarioPutDto.getId());
-        Usuario usuario =Usuario.builder()
-                .id(saveUsuario.getId())
-                .name(usuarioPutDto.getName())
-                .build();
-
+        Usuario usuario = UsuarioMapper.INSTANCE.toUsuario(usuarioPutDto);
+        usuario.setId(saveUsuario.getId());
         usuarioRepository.save(usuario);
     }
 }

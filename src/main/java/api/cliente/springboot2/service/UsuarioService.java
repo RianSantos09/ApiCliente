@@ -24,6 +24,11 @@ private final  UsuarioRepository usuarioRepository;
         return usuarioRepository.findAll();
     }
 
+    public List<Usuario> findByName(String name) {
+
+        return usuarioRepository.findByName(name);
+    }
+
     public Usuario findByIdOrThrowBadRequestException(long id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "usuario não encontrado"));

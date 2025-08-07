@@ -38,6 +38,12 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.findByIdOrThrowBadRequestException(id));
     }
 
+    @GetMapping(path = "/{name}")
+    public ResponseEntity <List<Usuario>>findById(@PathVariable String name) { // O método retorna uma lista de objetos Cliente.
+
+        return ResponseEntity.ok(usuarioService.findByName(name));
+    }
+
     @PostMapping
     public ResponseEntity <Usuario> save( @RequestBody UsuarioRequestDto usuarioRequestDto){
         return new  ResponseEntity<>(usuarioService.save(usuarioRequestDto),HttpStatus.CREATED);

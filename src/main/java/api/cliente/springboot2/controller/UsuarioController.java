@@ -27,7 +27,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity <List<Usuario>> list() { // O método retorna uma lista de objetos Cliente.
+    public ResponseEntity <List<Usuario>> list() { // O método retorna uma lista de objetos Cliente
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return new ResponseEntity<> (usuarioService.listAll(), HttpStatus.OK);
     }

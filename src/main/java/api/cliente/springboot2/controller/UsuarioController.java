@@ -38,8 +38,8 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.findByIdOrThrowBadRequestException(id));
     }
 
-    @GetMapping(path = "/{name}")
-    public ResponseEntity <List<Usuario>>findById(@PathVariable String name) { // O método retorna uma lista de objetos Cliente.
+    @GetMapping(path = "/find")
+    public ResponseEntity <List<Usuario>>findByName( @RequestParam String name) { // O método retorna uma lista de objetos Cliente.
 
         return ResponseEntity.ok(usuarioService.findByName(name));
     }

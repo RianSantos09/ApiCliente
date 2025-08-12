@@ -1,6 +1,7 @@
 package api.cliente.springboot2.service;
 
 import api.cliente.springboot2.domain.Usuario;
+import api.cliente.springboot2.exception.BadRequestException;
 import api.cliente.springboot2.repository.UsuarioRepository;
 import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
@@ -31,7 +32,7 @@ private final  UsuarioRepository usuarioRepository;
 
     public Usuario findByIdOrThrowBadRequestException(long id) {
         return usuarioRepository.findById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST, "usuario não encontrado"));
+                .orElseThrow(()-> new BadRequestException("usuario não encontrado"));
     }
 
     public Usuario save( UsuarioRequestDto usuarioRequestDto) {

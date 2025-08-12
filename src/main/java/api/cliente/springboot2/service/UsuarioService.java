@@ -5,6 +5,7 @@ import api.cliente.springboot2.exception.BadRequestException;
 import api.cliente.springboot2.repository.UsuarioRepository;
 import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import mapper.UsuarioMapper;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,7 @@ private final  UsuarioRepository usuarioRepository;
                 .orElseThrow(()-> new BadRequestException("usuario não encontrado"));
     }
 
+    @Transactional
     public Usuario save( UsuarioRequestDto usuarioRequestDto) {
 
         return usuarioRepository.save(UsuarioMapper.INSTANCE.toUsuario(usuarioRequestDto));

@@ -6,6 +6,7 @@ import api.cliente.springboot2.util.DateUtil;
 import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
 import jakarta.persistence.Entity;
+import jakarta.validation.Valid;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -45,7 +46,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity <Usuario> save( @RequestBody UsuarioRequestDto usuarioRequestDto){
+    public ResponseEntity <Usuario> save( @RequestBody @Valid UsuarioRequestDto usuarioRequestDto){
         return new  ResponseEntity<>(usuarioService.save(usuarioRequestDto),HttpStatus.CREATED);
     }
 

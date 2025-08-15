@@ -22,6 +22,8 @@ import java.util.List;
 @Log4j2 // Fornece um objeto 'log' (ex: 'log.info()') para registrar mensagens no console/arquivo de log
 @RequiredArgsConstructor // Gera um construtor para campos 'final'.
 
+@CrossOrigin(origins = "http://localhost:5173")
+
 
 public class UsuarioController {
     private final DateUtil dateUtil;

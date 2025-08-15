@@ -16,5 +16,8 @@
     "url": "https://github.com/RianSantos09/ApiCliente/issues"
   },
   "homepage": "https://github.com/RianSantos09/ApiCliente#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

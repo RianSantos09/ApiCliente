@@ -28,6 +28,7 @@ public class Usuario { // Declaração da classe Cliente. Esta é uma classe de 
     private int nivelDeAcesso;
     private String permissoes;
     private String descricao;
+    //
 
 }
 

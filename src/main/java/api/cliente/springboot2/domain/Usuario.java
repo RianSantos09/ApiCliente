@@ -24,6 +24,10 @@ public class Usuario { // Declaração da classe Cliente. Esta é uma classe de 
     private String name;
     private String email;
     private String senha;
+    // 1* sprint
+    private int nivelDeAcesso;
+    private String permissoes;
+    private String descricao;
 
 
 }

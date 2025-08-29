@@ -16,7 +16,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Usa a nova sintaxe
                 .authorizeHttpRequests(authorize -> authorize
-                        // ✅ REGRAS ESPECÍFICAS PRIMEIRO
+                        //REGRAS ESPECÍFICAS PRIMEIRO
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()

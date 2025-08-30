@@ -46,6 +46,7 @@ public class ClienteService {
         Cliente savedCliente = findByIdOrThrowBadRequestException(clientePutDto.getId());
         Cliente clienteToUpdate = clienteMapper.toCliente(clientePutDto);
         clienteToUpdate.setId(savedCliente.getId());
+
         clienteRepository.save(clienteToUpdate);
     }
 }

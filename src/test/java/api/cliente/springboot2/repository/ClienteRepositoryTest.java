@@ -4,11 +4,11 @@ import api.cliente.springboot2.domain.cliente.Cliente;
 import dto.ClientePutDto;
 import dto.ClienteRequestDto;
 import jakarta.persistence.EntityManager;
-import jdk.internal.misc.CarrierThreadLocal;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
@@ -30,18 +30,20 @@ class ClienteRepositoryTest {
 
     @Test
     void findByNome() {
-        String nome ="teste";
+        String nome ="rian santos";
         ClientePutDto data = new ClientePutDto();
         data.setCpfCnpj("12345678900");
-        data.setNome("Rian Santos");
+        data.setNome(nome);
         data.setTelefone("11988887777");
         data.setEndereco("rua dos croa, 47 - São Gabriel");
 
         this.createCliente(data);
 
-        Optional <Cliente> foundeCliente = this.clienteRepository.findByNome(nome);
+        Optional <Cliente> result = this.clienteRepository.findByNome(nome);
 
-     
+        assertThat(result.isPresent()).isTrue();
+
+
     }
 
 

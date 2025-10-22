@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import mapper.ClienteMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,9 +23,10 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    public List<Cliente> findByName(String nome) {
+    public Optional<Cliente> findByName(String nome) {
         return clienteRepository.findByNome(nome);
     }
+
 
     public Cliente findByIdOrThrowBadRequestException(long id) {
         return clienteRepository.findById(id)

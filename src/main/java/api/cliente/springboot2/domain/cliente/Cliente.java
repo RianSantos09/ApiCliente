@@ -14,4 +14,7 @@ public class Cliente extends Pessoa {
 
     private String historicoDeCompras;
     private double limiteDeCredito;
+
+
+
 }

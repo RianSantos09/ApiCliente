@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("clientes")
@@ -35,7 +36,7 @@ public class ClienteController {
     }
 
     @GetMapping(path = "/find")
-    public ResponseEntity<List<Cliente>> findByName(@RequestParam String nome) {
+    public ResponseEntity<Optional<Cliente>> findByName(@RequestParam String nome) {
         return ResponseEntity.ok(clienteService.findByName(nome));
     }
 

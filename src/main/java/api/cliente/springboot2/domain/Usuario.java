@@ -6,19 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.List;
-
 @Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
 
 
-public class Usuario { // Declaração da classe Cliente. Esta é uma classe de modelo (ou "domain" / "POJO") que representa um cliente.
-
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+
 
     private Long id;
     private String name;
@@ -28,6 +29,12 @@ public class Usuario { // Declaração da classe Cliente. Esta é uma classe de 
     private int nivelDeAcesso;
     private String permissoes;
     private String descricao;
+
+    public Usuario(long l, String name, String email, String senha, String permissoes, String descricao) {
+    }
+
+
+
     //
 
 }

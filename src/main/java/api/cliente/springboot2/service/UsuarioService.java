@@ -6,6 +6,7 @@ import api.cliente.springboot2.repository.UsuarioRepository;
 import dto.UsuarioPutDto;
 import dto.UsuarioRequestDto;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import mapper.UsuarioMapper;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;

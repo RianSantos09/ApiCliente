@@ -103,4 +103,8 @@ class ClienteServiceTest {
         verify(clienteRepository, times(1)).delete(clienteSalvoComId);
         verifyNoMoreInteractions(clienteRepository);
     }
+
+    @Test
+    void listAll() {
+    }
 }

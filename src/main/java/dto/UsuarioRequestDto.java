@@ -3,9 +3,11 @@ package dto;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class UsuarioRequestDto {
 
 
@@ -32,4 +34,6 @@ public class UsuarioRequestDto {
     @NotEmpty(message = "Descrição obrigatória")
     @NotNull(message = "Descrição obrigatória")
     private String descricao;
+
+
 }
